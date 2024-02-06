@@ -42,6 +42,10 @@
             color: black;
         }
 
+        .topnav a#twitter-link {
+            float: right;
+        }
+
         .underline {
             position: absolute;
             height: 3px;
@@ -115,6 +119,14 @@
             }
             .underline {
                 display: none;
+            }
+            .topnav a#twitter-link {
+                float: none;
+                order: 1;
+            }
+            .topnav.responsive {
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>
