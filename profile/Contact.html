@@ -41,12 +41,9 @@
             type="text/css">
     <style>
         .topnav {
-            z-index: 99;
-            position: fixed;
             overflow: hidden;
             background-color: RGB(254, 254, 254);
             position: relative;
-            font-family: Arial, Helvetica, sans-serif;
             border-radius: 15px;
         }
 
@@ -61,7 +58,6 @@
             font-size: 24px;
             line-height: 50px;
             transition: color 0.5s;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         .topnav a:hover {
@@ -73,8 +69,11 @@
             color: black;
         }
 
+        .topnav a#twitter-link {
+            float: right;
+        }
+
         .underline {
-            display: fixed;
             position: absolute;
             height: 3px;
             background: linear-gradient(to right, rgb(26, 109, 218), #8B008B);
@@ -147,6 +146,14 @@
             }
             .underline {
                 display: none;
+            }
+            .topnav a#twitter-link {
+                float: none;
+                order: 1;
+            }
+            .topnav.responsive {
+                display: flex;
+                flex-direction: column;
             }
         }
         
@@ -272,10 +279,15 @@
     </head>
     <body>
         <div class="topnav" id="myTopnav">
-            <a href="/">Home</a>
-            <a href="/works/mix">Works</a>
-            <a href="/profile/Bio">Bio</a>
-            <a href="/profile/Contact">Contact</a>
+            <div id="nav-links">
+                <a href="/">Home</a>
+                <a href="/works/mix">Works</a>
+                <a href="/profile/Bio">Bio</a>
+                <a href="/profile/Contact">Contact</a>
+            </div>
+            <a href="https://twitter.com/Lacia_mix" target="_blank" id="twitter-link">
+                <img src="/assets/twitter-logo.png" alt="Twitter Logo" style="height: 24px;">
+            </a>
             <div class="underline" id="underline"></div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <div class="bar1"></div>
