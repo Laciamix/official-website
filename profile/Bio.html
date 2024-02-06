@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html>
 
 <head>
@@ -42,14 +42,17 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
         ::-webkit-scrollbar{
             display: none;
-          }
+        }
+
         @media (max-width: 600px) {
             .Profile, .bioicon, ul {
                 flex-direction: column;
             }
         }
+
         .Profile {
             display: flex;
             justify-content: center;
@@ -57,8 +60,125 @@
             height: 100vh;
             margin: 0;
         }
+
+        .topnav {
+            overflow: hidden;
+            background-color: RGB(254, 254, 254);
+            position: relative;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            padding: 3px 16px;
+            text-decoration: none;
+            font-size: 24px;
+            line-height: 50px;
+            transition: color 0.5s;
+        }
+
+        .topnav a:hover {
+            opacity: 0.8;
+            color: lightskyblue;
+        }
+
+        .topnav a:active, .topnav a:focus {
+            color: black;
+        }
+
+        .underline {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(to right, rgb(26, 109, 218), #8B008B);
+            width: 0;
+            transition: all 0.5s;
+            border-radius: 3px;
+            bottom: 0px;
+            opacity: 0.7;
+        }
+
+        .icon {
+            display: none;
+            cursor: pointer;
+            float: right;
+            color: #f2f2f2;
+        }
+
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar1 {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .change .bar2 {opacity: 0;}
+
+        .change .bar3 {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        .gradient {
+            height: 10px;
+            background: linear-gradient(rgb(236, 236, 236), rgb(245, 245, 245));
+        }
+
+        @media screen and (min-width: 601px) {
+            .topnav a:not(:first-child) {display: block;}
+            .topnav a.icon {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child) {display: none;}
+            .topnav a.icon {
+                float: right;
+                display: block;
+                color: #f2f2f2;
+            }
+            .topnav.responsive a.icon {
+                position: fixed;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .topnav a {
+                font-size: 30px;
+            }
+            .topnav a[href="#home"] {
+                padding-right: 50px;
+            }
+            .underline {
+                display: none;
+            }
+        }
     </style>
     <body>
+        <div class="topnav" id="myTopnav">
+            <a href="/">Home</a>
+            <a href="/works/mix">Works</a>
+            <a href="/profile/Bio">Bio</a>
+            <a href="/profile/Contact">Contact</a>
+            <div class="underline" id="underline"></div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </a>
+        </div>
+        <div class="gradient"></div>
         <div class="Profile">
         <div class="bioicon"><img src="/assets/icon.png"></body></div>
         <ul style=list-style-type:none>
@@ -68,4 +188,53 @@
         </ul>
         </div>
         <script>
+            function myFunction() {
+                var underline = document.getElementById('underline');
+                var links = document.querySelectorAll('.topnav a');
+            
+                links.forEach(function(link) {
+                    link.addEventListener('mouseenter', function(e) {
+                        underline.style.width = e.target.offsetWidth + 'px';
+                        underline.style.left = e.target.offsetLeft + 'px';
+                    });
+            
+                    link.addEventListener('mouseleave', function(e) {
+                        underline.style.width = '0';
+                        underline.style.left = e.target.offsetLeft + 'px';
+                    });
+                });
+        
+                var x = document.getElementById("myTopnav");
+                var icon = document.querySelector(".icon");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                    icon.classList.add("change");
+                } else {
+                    x.className = "topnav";
+                    icon.classList.remove("change");
+                }
+            }
+        
+            window.onload = function() {
+                var underline = document.getElementById('underline');
+                var links = document.querySelectorAll('.topnav a');
+            
+                links.forEach(function(link) {
+                    link.addEventListener('mouseenter', function(e) {
+                        underline.style.width = e.target.offsetWidth + 'px';
+                        underline.style.left = e.target.offsetLeft + 'px';
+                    });
+            
+                    link.addEventListener('mouseleave', function(e) {
+                        underline.style.width = '0';
+                        underline.style.left = e.target.offsetLeft + 'px';
+                    });
+                });
+            
+                var worksLink = document.querySelector('.topnav a[href="/works/mix"]');
+                underline.style.width = worksLink.offsetWidth + 'px';
+                underline.style.left = worksLink.offsetLeft + 'px';
+            }
         </script>
+    </body>
+</head>
