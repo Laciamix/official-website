@@ -11,6 +11,7 @@
         .topnav {
             overflow: hidden;
             background-color: #333;
+            position: relative;
         }
 
         .topnav a {
@@ -22,16 +23,23 @@
             text-decoration: none;
             font-size: 24px;
             line-height: 50px;
+            transition: color 0.5s;
         }
 
         .topnav a:hover {
-            background-color: #ddd;
             color: black;
         }
 
         .topnav a:active, .topnav a:focus {
-            background-color: #333;
             color: #f2f2f2;
+        }
+
+        .underline {
+            position: absolute;
+            height: 2px;
+            background-color: #f2f2f2;
+            width: 0;
+            transition: all 0.5s;
         }
 
         .icon {
@@ -96,8 +104,9 @@
 
 <div class="topnav" id="myTopnav">
     <a href="/">Home</a>
-    <a href="/profile/Bio.html">Bio</a>
+    <a href="/profile/Bio">Bio</a>
     <a href="/profile/Contact">Contact</a>
+    <div class="underline" id="underline"></div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <div class="bar1"></div>
         <div class="bar2"></div>
@@ -107,6 +116,20 @@
 
 <script>
     function myFunction() {
+        var underline = document.getElementById('underline');
+        var links = document.querySelectorAll('.topnav a');
+    
+        links.forEach(function(link) {
+            link.addEventListener('mouseenter', function(e) {
+                underline.style.width = e.target.offsetWidth + 'px';
+                underline.style.left = e.target.offsetLeft + 'px';
+            });
+    
+            link.addEventListener('mouseleave', function(e) {
+                underline.style.width = 0;
+            });
+        });
+
         var x = document.getElementById("myTopnav");
         var icon = document.querySelector(".icon");
         if (x.className === "topnav") {
