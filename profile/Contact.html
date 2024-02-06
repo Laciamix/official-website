@@ -49,7 +49,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .notification {
             position: fixed;
             top: -100px;
@@ -439,6 +439,53 @@
         }else {
             document.getElementsByClassName('progress')[0].style.backgroundColor = '#e44418';
         }
+    }
+    function myFunction() {
+        var underline = document.getElementById('underline');
+        var links = document.querySelectorAll('.topnav a');
+    
+        links.forEach(function(link) {
+            link.addEventListener('mouseenter', function(e) {
+                underline.style.width = e.target.offsetWidth + 'px';
+                underline.style.left = e.target.offsetLeft + 'px';
+            });
+    
+            link.addEventListener('mouseleave', function(e) {
+                underline.style.width = '0';
+                underline.style.left = e.target.offsetLeft + 'px';
+            });
+        });
+
+        var x = document.getElementById("myTopnav");
+        var icon = document.querySelector(".icon");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+            icon.classList.add("change");
+        } else {
+            x.className = "topnav";
+            icon.classList.remove("change");
+        }
+    }
+
+    window.onload = function() {
+        var underline = document.getElementById('underline');
+        var links = document.querySelectorAll('.topnav a');
+    
+        links.forEach(function(link) {
+            link.addEventListener('mouseenter', function(e) {
+                underline.style.width = e.target.offsetWidth + 'px';
+                underline.style.left = e.target.offsetLeft + 'px';
+            });
+    
+            link.addEventListener('mouseleave', function(e) {
+                underline.style.width = '0';
+                underline.style.left = e.target.offsetLeft + 'px';
+            });
+        });
+    
+        var worksLink = document.querySelector('.topnav a[href="/works/mix"]');
+        underline.style.width = worksLink.offsetWidth + 'px';
+        underline.style.left = worksLink.offsetLeft + 'px';
     }
     </script>
     </body>
