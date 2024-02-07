@@ -67,6 +67,7 @@
             background-color: RGB(254, 254, 254);
             position: relative;
             border-radius: 15px;
+            filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.1));
         }
 
         .topnav a {
@@ -111,6 +112,8 @@
             cursor: pointer;
             float: right;
             color: #f2f2f2;
+            transform: translateY(5%);
+            position: relative;
         }
 
         .bar1, .bar2, .bar3 {
@@ -129,11 +132,6 @@
 
         .change .bar3 {
             transform: rotate(45deg) translate(-8px, -8px);
-        }
-
-        .gradient {
-            height: 10px;
-            background: linear-gradient(rgb(236, 236, 236), rgb(245, 245, 245));
         }
 
         @media screen and (min-width: 601px) {
@@ -197,7 +195,6 @@
                 <div class="bar3"></div>
             </a>
         </div>
-        <div class="gradient"></div>
         <div class="Profile">
         <div class="bioicon"><img src="/assets/icon.png"></body></div>
         <ul style=list-style-type:none>
